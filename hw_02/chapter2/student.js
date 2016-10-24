@@ -9,14 +9,16 @@ var schema = new mongoose.Schema({
  * to be everything up to the first space in the student's name.
  * For instance, "William Bruce Bailey" -> "William" */
 schema.virtual('firstName').get(function() {
-  return 'Not Implemented!';
+  var words = this.name.split(" ");
+  return words[0];
 });
 
 /* Returns the student's last name, which we will define
  * to be everything after the last space in the student's name.
  * For instance, "William Bruce Bailey" -> "Bailey" */
 schema.virtual('lastName').get(function() {
-  return 'Not Implemented!';
+  var words = this.name.split(" ");
+  return words[words.length-1];
 });
 
 module.exports = schema;
